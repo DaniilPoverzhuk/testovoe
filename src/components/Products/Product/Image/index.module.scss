@@ -1,0 +1,35 @@
+.root {
+  .img {
+    position: relative;
+
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .list_dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    li {
+      background: rgb(217, 217, 217);
+      border-radius: 100%;
+
+      width: 4px;
+      height: 4px;
+
+      transition: 0.4s;
+
+      &:nth-child(1) {
+        background: rgb(169, 161, 161);
+      }
+
+      &:hover {
+        background: rgb(169, 161, 161);
+      }
+    }
+  }
+}

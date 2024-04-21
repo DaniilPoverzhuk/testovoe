@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  li {
+    color: rgb(170, 170, 170);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+
+    position: relative;
+
+    &:not(:first-child) {
+      &::before {
+        content: "";
+        position: absolute;
+        left: -17.5px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 5px;
+        height: 5px;
+
+        border-radius: 100%;
+        background-color: rgb(170, 170, 170);
+      }
+    }
+  }
+}

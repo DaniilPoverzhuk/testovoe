@@ -1,0 +1,11 @@
+.banner {
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}
