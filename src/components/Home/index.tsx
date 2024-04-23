@@ -1,53 +1,34 @@
-import { IProduct } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useEffect } from "react";
+
 import styles from "./index.module.scss";
+
+import { getAll as getAllProducts } from "@/lib/slices/products";
 
 import Top from "./Top";
 import Products from "@/components/Products";
-
-const products: IProduct[] = [
-  {
-    id: 0,
-    name: "iPhone 15 Pro Max | 256",
-    price: 250,
-    price_delivery: 0,
-    image: "/images/product/product-1.png",
-    isLike: true,
-  },
-  {
-    id: 1,
-    name: "TON Drop Coin",
-    price: 5,
-    price_delivery: 5,
-    image: "/images/product/product-2.png",
-    isLike: false,
-  },
-  {
-    id: 2,
-    name: "Nike Air Force 1",
-    price: 12,
-    price_delivery: 0,
-    image: "/images/product/product-3.png",
-    isLike: false,
-  },
-  {
-    id: 3,
-    name: "AirPods Pro 2nd Gen",
-    price: 12,
-    price_delivery: 0,
-    image: "/images/product/product-4.png",
-    isLike: false,
-  },
-  {
-    id: 4,
-    name: "PEPE Plush Toy",
-    price: 2.8,
-    price_delivery: 5,
-    image: "/images/product/product-5.png",
-    isLike: false,
-  },
-];
+import Loader from "@/components/Loader";
+import Error from "@/components/Error";
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+  const {
+    error,
+    data: products,
+    status,
+  } = useAppSelector((store) => store.products);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
+
+  if (status === "loading") {
+    return <Loader />;
+  }
+
+  if (status === "error") {
+    return <Error message={error?.message!} />;
+  }
   return (
     <>
       <Top />

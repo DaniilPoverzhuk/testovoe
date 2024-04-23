@@ -1,6 +1,12 @@
 .root {
   background-color: #171717;
+  width: 100%;
+  max-width: 575px;
+
   padding: 10px 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
 
   .list {
     display: grid;

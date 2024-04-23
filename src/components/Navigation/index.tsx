@@ -2,7 +2,7 @@ import Heart from "@/icons/Heart";
 import styles from "./index.module.scss";
 import { ROUTES } from "@/routes";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useMemo } from "react";
+import { forwardRef, useEffect, useMemo } from "react";
 
 type TypeNavName = "Home" | "Categories" | "Orders" | "Profile";
 
@@ -40,7 +40,7 @@ const list: INavigate[] = [
   },
 ];
 
-const Navigate = () => {
+const Navigate = forwardRef<HTMLDivElement>((_, ref) => {
   const { pathname } = useLocation();
 
   const isCurrentPath = (path: ROUTES) => {
@@ -48,7 +48,7 @@ const Navigate = () => {
   };
 
   return (
-    <div className={styles.root}>
+    <div ref={ref} className={styles.root}>
       <nav>
         <ul className={styles.list}>
           {list.map(({ Img, id, name, path }) => (
@@ -75,6 +75,6 @@ const Navigate = () => {
       </nav>
     </div>
   );
-};
+});
 
 export default Navigate;

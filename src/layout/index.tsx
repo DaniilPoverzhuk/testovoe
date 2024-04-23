@@ -1,18 +1,29 @@
+import { useMemo } from "react";
 import { Outlet } from "react-router-dom";
 
 import Navigation from "@/components/Navigation";
-import Container from "@/ui/Container";
 import Header from "@/components/Header";
+import Container from "@/ui/Container";
+
+import useHeightNavigation from "@/hooks/useHeightNavigation";
 
 const Layout = () => {
+  const { ref, height } = useHeightNavigation();
+  const style = useMemo(
+    () => (height ? { paddingBottom: `${height! + 20}px` } : null),
+    [height]
+  );
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <>
       <Header />
-      <Container style={{ flexGrow: 1 }}>
-        <Outlet />
-      </Container>
-      <Navigation />
-    </div>
+      <main style={style!}>
+        <Container>
+          <Outlet />
+        </Container>
+      </main>
+      <Navigation ref={ref} />
+    </>
   );
 };
 

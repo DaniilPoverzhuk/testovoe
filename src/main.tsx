@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import "@/styles/index.css";
 
@@ -18,6 +19,8 @@ import NotFound from "@/pages/not-found";
 
 import Layout from "@/layout";
 import LayoutCategory from "@/layout/Category";
+
+import { store } from "@/lib/store";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +38,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

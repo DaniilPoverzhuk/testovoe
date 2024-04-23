@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 
 type TypeCategoryName =
   | "Apple"
-  | "Drops & Mining"
+  | "Drops & Minings"
   | "Sneakers"
   | "Cold Wallets"
   | "Meme Toys"
@@ -25,9 +25,9 @@ const CATEGORIES: ICategory[] = [
   },
   {
     id: 1,
-    name: "Drops & Mining",
+    name: "Drops & Minings",
     img: "/images/categories/drops-mining.png",
-    path: "/categories/drops-&-mining",
+    path: "/categories/drops-&-minings",
   },
   {
     id: 2,

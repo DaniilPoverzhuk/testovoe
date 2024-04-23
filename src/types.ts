@@ -1,10 +1,19 @@
 export interface IProduct {
-  id: number;
+  _id: string;
   name: string;
+  description: string;
+  type: string;
+  category: string;
+  subCategory: string;
   price: number;
-  price_delivery: number;
-  image: string;
-  isLike: boolean;
+  currency: string;
+  sold: number;
+  deliverMin: number;
+  deliverMax: number;
+  specialQuote: string;
+  properties: [{ weight: string }, { diameter: string }, { thikness: string }];
+  images: string[];
+  deliveryFee: number;
 }
 
 export interface Icon {

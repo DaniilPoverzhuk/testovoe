@@ -1,11 +1,21 @@
 .banner {
+  display: flex;
+  justify-content: center;
+
   img {
-    max-width: 100%;
-    object-fit: cover;
+    width: 100%;
   }
 }
 
 .list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+  gap: 7px;
+
+  @media (min-width: 390px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
 }

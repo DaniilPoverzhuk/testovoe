@@ -6,8 +6,8 @@ import { IProduct } from "@/types";
 const Products = ({ list }: { list: IProduct[] }) => {
   return (
     <ul className={styles.list}>
-      {list.map((product) => (
-        <Product key={product.id} {...product} />
+      {list.map((item) => (
+        <Product key={item._id} {...item} />
       ))}
     </ul>
   );

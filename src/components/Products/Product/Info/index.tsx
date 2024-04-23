@@ -6,17 +6,17 @@ import { useMemo } from "react";
 const Info = ({
   name,
   price,
-  price_delivery,
-}: Omit<IProduct, "image" | "isLike">) => {
+  deliveryFee,
+}: Pick<IProduct, "name" | "price" | "deliveryFee">) => {
   const { isFreeDelivery, textDelivery } = useMemo(
     () =>
-      !price_delivery
+      !deliveryFee
         ? { isFreeDelivery: true, textDelivery: "CIS Free Delivery" }
         : {
             isFreeDelivery: false,
-            textDelivery: `Delivery cost: ${price_delivery} TON`,
+            textDelivery: `Delivery cost: ${deliveryFee} TON`,
           },
-    [price_delivery]
+    [deliveryFee]
   );
 
   return (

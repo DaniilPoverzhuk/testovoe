@@ -7,13 +7,14 @@ import { ROUTES } from "@/routes";
 
 import getCapitalizeWord from "@/utils/getCapitalizeWord";
 import isNegative from "@/utils/isNegative";
+import getStrWithRemovedExtraChar from "@/utils/getStrWithRemovedExtraChar";
 
 const DEFAULT_BREAD_CRUMBS = ["Categories"];
 
 const CATEGORIES = [
   "categories",
   "apple",
-  "drops & mining",
+  "drops & minings",
   "sneakers",
   "cold wallets",
   "meme toys",
@@ -36,21 +37,11 @@ const BreadCrumbs = () => {
   }, [pathname]);
 
   function getCurrentCategory() {
-    const idx = CATEGORIES.indexOf(getConvertedPath()!);
+    const category = pathname.split("/").at(-1)!;
+    const idx = CATEGORIES.indexOf(getStrWithRemovedExtraChar(category, "-")!);
     const word = CATEGORIES.at(isNegative(idx) ? CATEGORIES.length + 1 : idx);
 
     return word;
-  }
-
-  function getConvertedPath() {
-    const path = pathname.split("/").at(-1)!;
-
-    if (!path) return;
-
-    if (path.includes("-")) {
-      return path.split("-").join(" ");
-    }
-    return path;
   }
 
   useEffect(() => {

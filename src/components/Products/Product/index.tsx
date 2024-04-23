@@ -5,10 +5,10 @@ import { IProduct } from "@/types";
 import Info from "./Info";
 import Image from "./Image";
 
-const Product = ({ image, isLike, ...props }: IProduct) => {
+const Product = ({ images, ...props }: IProduct) => {
   return (
     <li className={styles.root}>
-      <Image image={image} isLike={isLike} />
+      <Image img={images[0]} />
       <Info {...props} />
     </li>
   );

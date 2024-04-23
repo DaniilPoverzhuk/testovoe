@@ -1,27 +1,32 @@
+import { useMemo } from "react";
+import { useParams } from "react-router-dom";
+
+import { useAppSelector } from "@/lib/hooks";
+
+import Error from "@/components/Error";
 import Products from "@/components/Products";
+
+import getStrWithRemovedExtraChar from "@/utils/getStrWithRemovedExtraChar";
+
 import { IProduct } from "@/types";
 
-const products: IProduct[] = [
-  {
-    id: 0,
-    name: "iPhone 15 Pro Max | 256",
-    price: 250,
-    price_delivery: 0,
-    image: "/images/product/product-1.png",
-    isLike: true,
-  },
-  {
-    id: 1,
-    name: "TON Drop Coin",
-    price: 5,
-    price_delivery: 5,
-    image: "/images/product/product-2.png",
-    isLike: false,
-  },
-];
-
 const Category = () => {
-  return <Products list={products} />;
+  const { id: category } = useParams();
+  const { data: products } = useAppSelector((store) => store.products);
+  const filteredProducts = useMemo<IProduct[] | null>(() => {
+    if (!category) return null;
+
+    const convertedCategory = getStrWithRemovedExtraChar(category, "-");
+    return products.filter(
+      (product) => product.category.toLowerCase() === convertedCategory
+    );
+  }, [products]);
+
+  if (!filteredProducts) {
+    return <Error message="Нет товара :(" />;
+  }
+
+  return <Products list={filteredProducts} />;
 };
 
 export default Category;
