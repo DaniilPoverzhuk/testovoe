@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display';
+}
+
+body {
+    min-height: 100vh;
+    max-width: 540px;
+    margin: 0 auto;
+    background-color: #1a1a1a;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+}

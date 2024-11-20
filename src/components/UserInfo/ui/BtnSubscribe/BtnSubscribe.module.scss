@@ -1,0 +1,27 @@
+.root {
+    display: flex;
+    gap: 6px;
+
+    button {
+        border-radius: 8px;
+    }
+
+    .btn_subscribe {
+        flex-grow: 1;
+        padding: 11px 0;
+
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 22px;
+        letter-spacing: -0.24px;
+        color: #fff;
+
+        background-color: #0098eb;
+    }
+
+    .btn_short_more {
+        background-color: #2e2e2e;
+        padding: 12px;
+        display: flex;
+    }
+}

@@ -1,0 +1,1 @@
+export { BtnSubscribe } from './BtnSubscribe';
